@@ -83,9 +83,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.0/Spiffy.pm
-/usr/lib/perl5/vendor_perl/5.28.0/Spiffy.pod
-/usr/lib/perl5/vendor_perl/5.28.0/Spiffy/mixin.pm
+/usr/lib/perl5/vendor_perl/5.28.1Spiffy.pm
+/usr/lib/perl5/vendor_perl/5.28.1Spiffy.pod
+/usr/lib/perl5/vendor_perl/5.28.1Spiffy/mixin.pm
 
 %files dev
 %defattr(-,root,root,-)
