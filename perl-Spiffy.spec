@@ -4,7 +4,7 @@
 #
 Name     : perl-Spiffy
 Version  : 0.46
-Release  : 7
+Release  : 8
 URL      : https://cpan.metacpan.org/authors/id/I/IN/INGY/Spiffy-0.46.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IN/INGY/Spiffy-0.46.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libs/libspiffy-perl/libspiffy-perl_0.41-1.debian.tar.xz
@@ -45,7 +45,7 @@ license components for the perl-Spiffy package.
 cd ..
 %setup -q -T -D -n Spiffy-0.46 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Spiffy-0.46/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Spiffy-0.46/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -59,13 +59,6 @@ else
 %{__perl} Build.PL
 ./Build
 fi
-
-%check
-export LANG=C
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost,127.0.0.1,0.0.0.0
-make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
@@ -83,9 +76,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.1Spiffy.pm
-/usr/lib/perl5/vendor_perl/5.28.1Spiffy.pod
-/usr/lib/perl5/vendor_perl/5.28.1Spiffy/mixin.pm
+/usr/lib/perl5/vendor_perl/5.28.1/Spiffy.pm
+/usr/lib/perl5/vendor_perl/5.28.1/Spiffy.pod
+/usr/lib/perl5/vendor_perl/5.28.1/Spiffy/mixin.pm
 
 %files dev
 %defattr(-,root,root,-)
