@@ -4,7 +4,7 @@
 #
 Name     : perl-Spiffy
 Version  : 0.46
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/I/IN/INGY/Spiffy-0.46.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IN/INGY/Spiffy-0.46.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libs/libspiffy-perl/libspiffy-perl_0.41-1.debian.tar.xz
@@ -12,6 +12,7 @@ Summary  : 'Spiffy Perl Interface Framework For You'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Spiffy-license = %{version}-%{release}
+Requires: perl-Spiffy-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -27,6 +28,7 @@ const mood => ':-)';
 Summary: dev components for the perl-Spiffy package.
 Group: Development
 Provides: perl-Spiffy-devel = %{version}-%{release}
+Requires: perl-Spiffy = %{version}-%{release}
 
 %description dev
 dev components for the perl-Spiffy package.
@@ -40,18 +42,28 @@ Group: Default
 license components for the perl-Spiffy package.
 
 
+%package perl
+Summary: perl components for the perl-Spiffy package.
+Group: Default
+Requires: perl-Spiffy = %{version}-%{release}
+
+%description perl
+perl components for the perl-Spiffy package.
+
+
 %prep
 %setup -q -n Spiffy-0.46
-cd ..
-%setup -q -T -D -n Spiffy-0.46 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libspiffy-perl_0.41-1.debian.tar.xz
+cd %{_builddir}/Spiffy-0.46
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Spiffy-0.46/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Spiffy-0.46/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -63,7 +75,7 @@ fi
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Spiffy
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Spiffy/LICENSE
+cp %{_builddir}/Spiffy-0.46/LICENSE %{buildroot}/usr/share/package-licenses/perl-Spiffy/cf5d6a48250e5dda7a902a071cd225d67ceed773
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -76,9 +88,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2//Spiffy.pm
-/usr/lib/perl5/vendor_perl/5.28.2//Spiffy.pod
-/usr/lib/perl5/vendor_perl/5.28.2//Spiffy/mixin.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -86,4 +95,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Spiffy/LICENSE
+/usr/share/package-licenses/perl-Spiffy/cf5d6a48250e5dda7a902a071cd225d67ceed773
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Spiffy.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Spiffy.pod
+/usr/lib/perl5/vendor_perl/5.30.1/Spiffy/mixin.pm
