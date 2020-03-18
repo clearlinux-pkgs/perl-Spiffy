@@ -4,7 +4,7 @@
 #
 Name     : perl-Spiffy
 Version  : 0.46
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/I/IN/INGY/Spiffy-0.46.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IN/INGY/Spiffy-0.46.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libs/libspiffy-perl/libspiffy-perl_0.41-1.debian.tar.xz
@@ -99,6 +99,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Spiffy.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Spiffy.pod
-/usr/lib/perl5/vendor_perl/5.30.1/Spiffy/mixin.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Spiffy.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Spiffy.pod
+/usr/lib/perl5/vendor_perl/5.30.2/Spiffy/mixin.pm
