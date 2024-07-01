@@ -5,7 +5,7 @@
 #
 Name     : perl-Spiffy
 Version  : 0.46
-Release  : 28
+Release  : 29
 URL      : https://cpan.metacpan.org/authors/id/I/IN/INGY/Spiffy-0.46.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IN/INGY/Spiffy-0.46.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libs/libspiffy-perl/libspiffy-perl_0.41-1.debian.tar.xz
